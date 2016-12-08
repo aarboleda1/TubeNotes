@@ -6,9 +6,9 @@ angular.module('tubenotes.search', [])
 
   console.log('search controller is loaded');
 
-  $scope.searchYoutube = function() {
+  $scope.searchYoutube = function(msg) {
     console.log('SEARCH YOUTUBE');
-    var testSearch = 'cats';
+    // var testSearch = 'cats';
 
     $http.get('https://www.googleapis.com/youtube/v3/search', {
       params: {
@@ -16,7 +16,7 @@ angular.module('tubenotes.search', [])
         type: 'video',
         maxResults: '10',
         part: 'id,snippet',
-        q: testSearch
+        q: msg
       }
     })
     .success(function(data) {
