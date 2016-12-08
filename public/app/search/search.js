@@ -5,10 +5,12 @@ angular.module('tubenotes.search', [])
   $scope.videos = [];
 
   console.log('search controller is loaded');
-
+  
+  $scope.test = function () {
+    console.log('CLICKED')
+  }  
   $scope.searchYoutube = function(msg) {
     console.log('SEARCH YOUTUBE');
-    // var testSearch = 'cats';
 
     $http.get('https://www.googleapis.com/youtube/v3/search', {
       params: {
