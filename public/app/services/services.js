@@ -1,6 +1,6 @@
 angular.module('tubenotes.services', [])
 
-.factory('youtubeUtility', function($http){
+.factory('YouTubeUtility', function($http){
   var getYoutube = function(searchString, callback) {
     
   };

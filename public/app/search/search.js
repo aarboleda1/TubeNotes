@@ -9,6 +9,7 @@ angular.module('tubenotes.search', [])
   $scope.test = function () {
     console.log('CLICKED')
   }  
+  // YoutubeUtility.searchYoutube();
   $scope.searchYoutube = function(msg) {
     console.log('SEARCH YOUTUBE');
 
