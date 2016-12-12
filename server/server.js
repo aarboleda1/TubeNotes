@@ -46,8 +46,7 @@ app.post('/comment-video', function (req, res) {
 });
 
 app.post('/users/signup', function (req, res) {
-  console.log('TESTST')
-  db.User.create({where: {username: req.body.username}})
+  db.User.findOrCreate({where: {username: req.body.username, password: req.body.username}})
   //send them back a response token
   res.send();
 })

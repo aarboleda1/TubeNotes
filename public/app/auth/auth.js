@@ -4,7 +4,6 @@ angular.module('tubenotes.auth', [])
   $scope.user = {};
 
   $scope.login = function () {
-    console.log($scope.user);
     Auth.login($scope.user)
       .then(function (token) {
         window.username = $scope.user.username;        

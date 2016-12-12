@@ -16,13 +16,13 @@ angular.module('tubenotes.services', [])
 
   var signup = function (user) {
     console.log(user);
+    console.log('signup triggered')
     return $http({
       method: 'POST',
       url: '/users/signup',
       data: user
     })
     .then(function (resp) {
-      console.log(resp)
       return resp.data.token;
     });
   };
