@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+var jwt = require('jwt-simple');
+
 var path = require('path');
 var bodyParser = require('body-parser');
 
@@ -45,20 +47,35 @@ app.post('/comment-video', function (req, res) {
   res.status(201).send('sent');
 });
 
+
+
+
 app.post('/users/signup', function (req, res) {
-  console.log('TESTST')
-  db.User.create({where: {username: req.body.username}})
-  //send them back a response token
-  res.send();
+
+  db.User.findOrCreate({where: {username: req.body.username, password: req.body.password}})
+    .then (function () {
+      // create token to send back for auth
+      var token = jwt.encode(user, 'secret');
+      res.json({token: token});
+    }) 
+    .spread(function (user, created) {
+      res.send(user)
+    })
+
 })
 
 app.post('/users/login', function (req, res) {
   db.User.findOne({
-    
+    where: {
+      username: req.body.name, 
+      password: req.body.password
+    }
+  }).then(function (user) {
+    res.send(user);    
   })
-  //send them back a response token
-  res.send();
 })
+
+
 
 
 app.use(express.static(path.join(__dirname, '../public')));
